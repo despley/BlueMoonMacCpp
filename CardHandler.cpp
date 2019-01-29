@@ -291,12 +291,11 @@ vector<people> read_cards()
                     {
                         unsigned int j = peoples.back().deck.back().icons;
                         j |= 1 << i;
-                        peoples.back().deck.back().icons |= j;
+                        peoples.back().deck.back().icons = j;
                         cout << peoples.back().deck.back().icons << endl;
                     }
                 }
             }
-            continue;
         }
         if(configLine.front() == 'C') {
             peoples.back().deck.back().capacity = stoi(configLine.substr(2, configLine.length()));
