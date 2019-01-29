@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.13)
+project(BlueMoon3)
+set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
+
+add_executable(BlueMoon3 main.cpp CardHandler.cpp CardHandler.h Cards.h)
+configure_file(Resources/cards.txt cards.txt)

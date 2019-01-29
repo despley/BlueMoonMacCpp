@@ -1,0 +1,3 @@
+/Users/davidespley/CLionProjects/BlueMoon3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/davidespley/CLionProjects/BlueMoon3/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/davidespley/CLionProjects/BlueMoon3/cmake-build-debug/CMakeFiles/BlueMoon3.dir
