@@ -4,7 +4,8 @@
 #include "CardHandler.h"
 
 int main() {
-    vector<people> peeps = read_cards();
+    vector<people> peeps;
+    read_cards(&peeps);
     for(int y=0; y<peeps.size(); y++) {
         std::cout << peeps[y].name << std::endl;
         vector<card> deck = peeps[y].deck;

@@ -6,6 +6,6 @@
 
 #include "Cards.h"
 
-vector<people> read_cards();
+void read_cards(vector<people>*);
 
 #endif //BLUEMOON3_CARDHANDLER_H

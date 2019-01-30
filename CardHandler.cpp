@@ -230,10 +230,11 @@ static int lookup_effect(char *ptr, int cat)
 
 
 
-vector<people> read_cards()
+void read_cards(vector<people> *peoples)
 {
 
-    vector<people> peoples;
+
+    //vector<people> peoples;
 
     ifstream configFile;
     string configLine;
@@ -257,54 +258,48 @@ vector<people> read_cards()
             /* New people */
             people peopleInstance;
             peopleInstance.name = configLine.substr(2, configLine.length());
-            peoples.push_back(peopleInstance);
+            peoples->push_back(peopleInstance);
             continue;
         }
                 /* New card */
         if(configLine.front() == 'N') {
             card cc;
             cc.name = configLine.substr(2, configLine.length());
-            peoples.back().deck.push_back(cc);
+            peoples->back().deck.push_back(cc);
             continue;
         }
         if(configLine.front() == 'V') {
             istringstream stringStream(configLine.substr(2, configLine.length()));
             getline(stringStream, configValue, ':');
-            peoples.back().deck.back().fire = stoi(configValue);
+            peoples->back().deck.back().fire = stoi(configValue);
             getline(stringStream, configValue, ':');
-            peoples.back().deck.back().earth = stoi(configValue);
+            peoples->back().deck.back().earth = stoi(configValue);
             continue;
          }
         if(configLine.front() == 'T') {
-            peoples.back().deck.back().type = stoi(configLine.substr(2, configLine.length()));
+            peoples->back().deck.back().type = stoi(configLine.substr(2, configLine.length()));
             continue;
         }
         if(configLine.front() == 'F') {
             istringstream stringStream(configLine.substr(2, configLine.length()));
-            unsigned int i;
             while(getline(stringStream, configValue, '|'))
             {
                 configValue = trim(configValue);
-                for(i = 0; icon_name[i]; i++)
+                for(unsigned int i = 0; icon_name[i]; i++)
                 {
                     if((string) icon_name[i] == configValue)
                     {
-                        unsigned int j = peoples.back().deck.back().icons;
-                        j |= 1 << i;
-                        peoples.back().deck.back().icons = j;
-                        cout << peoples.back().deck.back().icons << endl;
+                        peoples->back().deck.back().icons |= 1 << i;
                     }
                 }
             }
         }
         if(configLine.front() == 'C') {
-            peoples.back().deck.back().capacity = stoi(configLine.substr(2, configLine.length()));
+            peoples->back().deck.back().capacity = stoi(configLine.substr(2, configLine.length()));
             continue;
         }
     }
-
     /* Close card card file */
     configFile.close();
-    return peoples;
 }
 
